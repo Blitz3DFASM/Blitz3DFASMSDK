@@ -24,3 +24,10 @@ section '.code' code readable writeable executable
 _start:
        cinvoke bbBeginBlitz3D
        jmp start
+
+; This code be included at end of file
+postpone
+{
+   cinvoke bbEndBlitz3D
+   invoke ExitProcess,0   
+}
