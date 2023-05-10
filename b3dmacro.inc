@@ -92,10 +92,3 @@ else
    push eax
 end if
 }
-
-; This code be included at end of file
-postpone
-{
-   cinvoke bbEndBlitz3D
-   invoke ExitProcess,0   
-}
