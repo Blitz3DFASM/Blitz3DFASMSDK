@@ -1,4 +1,4 @@
-# Blitz3D-FASM-SDK
+# Blitz3D FASM SDK
 
 Blitz3D SDK for Flat Assembler x86
 
@@ -19,8 +19,8 @@ SDK contains files:
 * b3dmacro.inc - contains assember macroses for SDK for easy text output, random generator and other
 * blitz3d.inc - special header, it simplifies the code structure to a minimum, which makes programming easier for novice users. (used throughout the examples).
 * res.inc - contain resources description
-* \examples
-* \help
+* \examples - contain app examples
+* \help - contain few examples from help
 
 # Typical Blitz3D Assembler x86 appliction source code
 
