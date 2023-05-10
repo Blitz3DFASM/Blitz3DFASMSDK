@@ -136,4 +136,62 @@ While we are not considering the Blitz3D code and functions itself, this is only
 
     section '.rsrc' resource data readable
            ICON equ '3D.ico'
-           include 'res.inc'                                                      
+           include 'res.inc'                      
+          
+# Using simplified code with blitz3d.inc
+
+Using blitz3d.inc allows to greatly simplify the code.
+
+However, with this approach, both the data and the executable code are in the same *.code* section, which is not very good.
+
+On the positive side:
+1. code sections are hidden from the main code, which reduces its size.
+3. don't need to call bbBeginBlitz3D at the beginning of the code, this is done automatically.
+3. No need to add: bbEndBlitz3D and ExitProcess at the end. A special macro adds this code to the end of the application automatically.
+
+Among the shortcomings, it can also be noted that if you want to connect any other library or change resources, then it will be difficult for you to do this. In a simple way, no way.
+
+        ; Line example
+        include "blitz3d.inc"
+
+        r dd 0
+        g dd 0
+        b dd 0
+        x1 dd 0
+        y1 dd 0
+        x2 dd 0
+        y2 dd 0
+
+        start:
+             ; Set The Graphic Mode
+             cinvoke bbGraphics, 800, 600, 0, 0
+
+             ; Set backbuffer
+             cinvoke bbBackBuffer
+             cinvoke bbSetBuffer, eax
+
+             ; Wait for ESC to hit
+        main_loop:
+             cinvoke bbKeyHit, KEY_ESCAPE ; Wait Esc
+             or eax, eax
+             jnz exit_from_main_loop
+
+             ; Set a random color
+             rand [r],255
+             rand [g],255
+             rand [b],255
+             cinvoke bbColor, [r], [g], [b]
+
+             ; Draw a random line
+             rand [x1],800
+             rand [y1],600
+             rand [x2],800
+             rand [y2],600
+             cinvoke bbLine, [x1],[y1],[x2],[y2]
+
+             cinvoke bbFlip, 0
+
+             jmp main_loop;
+        exit_from_main_loop:  
+        
+ 
