@@ -32,9 +32,6 @@ And several sections:
 * *.data* - Contains variables, arrays are marked as writable and readable, but not executable.
 * *.code* - Contains code, can also contain data but is read-only, marked as readable and executable code, but not writable (modifications).
 * *.idata* - Contains information about exported functions of third-party libraries. As a rule, this is a user32, kernel32 and of course b3d "headers".
-Результаты перевода
-Перевод
-As a rule, this is a 2m kernel and, of course,
 * *.rsrc* - Contains application resources: icons, application version information, can also contain images, dialogs, menus.
 
 The approach of dividing the code into sections allows you to make the application more secure, for example, you cannot save the code into a variable and execute it. This is protection against code injections.
