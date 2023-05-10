@@ -1,16 +1,50 @@
 # Blitz3D-FASM-SDK
+
 Blitz3D SDK for Flat Assembler x86
 
 # How to use
+
 * Download Blitz3D SDK V1.05 and get B3D.dll from it and place it in folder with *.inc files from this SDK.
 * Download FASM for windows, extract it to specify folder.
 * Run FASMW IDE from FASM archive 
 * Open one of the *.asm files from this SDK examples folder
 * Select Run->Run for create execute and run example
 
+# SDK Description:
+
+SDK contains files:
+
+* b3d.inc - headers of b3d.dll
+* blitz3dsdk.inc - contains Blitz3D constants like key codes, data types and other constants 
+* b3dmacro.inc - contains assember macroses for SDK for easy text output, random generator and other
+* blitz3d.inc - special header, it simplifies the code structure to a minimum, which makes programming easier for novice users. (used throughout the examples).
+* res.inc - contain resources description
+* \examples
+* \help
+
 # Typical Blitz3D Assembler x86 appliction source code
 
+Typical FASM application code for Windows consists of:  
+* header *format PE GUI 4.0*
+* pointer to the beginning of the code *entry start*  
 
+And several sections:
+* *.data* - Contains variables, arrays are marked as writable and readable, but not executable.
+* *.code* - Contains code, can also contain data but is read-only, marked as readable and executable code, but not writable (modifications).
+* *.idata* - Contains information about exported functions of third-party libraries. As a rule, this is a user32, kernel32 and of course b3d "headers".
+Результаты перевода
+Перевод
+As a rule, this is a 2m kernel and, of course,
+* *.rsrc* - Contains application resources: icons, application version information, can also contain images, dialogs, menus.
+
+The approach of dividing the code into sections allows you to make the application more secure, for example, you cannot save the code into a variable and execute it. This is protection against code injections.
+
+A typical Blitz3D SDK application has the following structure:
+* Before start working with SDK, need to invoke bbBeginBlitz3D at first
+* Next, if you use graphics, you need to create a window by bbGraphics3D, 640, 480, 32, 3 Then some custom code follows.
+* At the end, when exiting the application, need to call bbEndBlitz3D and invoke ExitProcess
+
+While we are not considering the Blitz3D code and functions itself, this is only a description of the assembler code structure of typical Windows application.
 
     ;******************************************************
     ;*                  Blitz3D on FASM                   *
@@ -43,9 +77,9 @@ Blitz3D SDK for Flat Assembler x86
 
     start:
           cinvoke bbBeginBlitz3D
-          cinvoke bbSetBlitz3DTitle, title, empty_str
           cinvoke bbGraphics3D, 640, 480, 32, 3
-
+          cinvoke bbSetBlitz3DTitle, title, empty_str
+          
           cinvoke bbBackBuffer
           mov [buffer],eax
           cinvoke bbSetBuffer, [buffer]
