@@ -1,6 +1,7 @@
 # Blitz3D FASM SDK
 
-Blitz3D SDK for Flat Assembler x86
+Blitz3D SDK for Flat Assembler x86  
+Simple [Online Help](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm)
 
 # How to use
 
