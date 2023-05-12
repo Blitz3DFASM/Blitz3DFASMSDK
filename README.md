@@ -5,13 +5,13 @@ Simple [Online Help](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_
 
 # How to use
 
-* Download [Blitz3D SDK V1.05](https://www.google.com/search?q=Blitz3D+SDK+v1.05), and extract it to any folder folder.
-* Download FASM for windows, and extract it to any folder folder.
+* Download [Blitz3D SDK V1.05](http://www.google.com/search?q=Blitz3D+SDK+v1.05), and extract it to any folder folder.
+* Download [FASM for windows](http://flatassembler.net/download.php), and extract it to any folder folder.
 * Copy all files from SDK\INCLUDE folder to FASM\INCLUDE folder.
-* Copy B3D.dll from *Blitz3D_SDK_V1.05\redist* folder and copy it to folder with *.asm files (The compiled exe file will not run without this library).
-* Run FASMW IDE from FASM archive and open one of the *.asm files from this SDK.
-* Select Run->Run from main menu for create execute and run example.
-* **Note:** Also, you can set FASMW as default for asm files. Then, when opening an *.asm file, it will immediately open in the FASMW environment, which greatly simplifies the work.
+* Copy **B3D.dll** from *Blitz3D_SDK_V1.05\redist* folder and copy it **to folder with \*.asm files** (The compiled exe file will not run without this library).
+* Run FASMW.EXE IDE from FASM archive and open one of the *.asm files from this SDK and select Run->Run from main menu for create execute and run example.
+
+**Note:** Also, you can set FASMW as default for asm files. Then, when opening an *.asm file, it will immediately open in the FASMW environment, which greatly simplifies the work.
 
 # SDK Description:
 
@@ -24,7 +24,7 @@ SDK contains files:
     * blitz3d.inc - special header, it simplifies the code structure to a minimum, which makes programming easier for novice users. (used throughout the examples).
     * res.inc - contain resources description
 * \examples - contain a few examples
-* \help\asm_commands - contain few examples from help that match the commands in the documentation.
+* \help\asm_commands - contain few examples from help that match the commands in the [Documentation repository](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm).
 
 # Typical Blitz3D Assembler x86 appliction source code
 
