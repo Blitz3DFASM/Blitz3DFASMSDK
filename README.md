@@ -6,6 +6,8 @@ Simple Online Help is placed [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK
 
 # How to use
 
+![B3DFASMSDK](https://github.com/Blitz3DFASM/Blitz3DFASMSDK/assets/133161792/3ee654fe-ede5-41b8-82ec-f4844ac47074)
+
 * Download [this Blits3D FASM SDK](https://github.com/Blitz3DFASM/Blitz3DFASMSDK/archive/refs/heads/main.zip), and extract it to any folder folder.
 * Download [Blitz3D SDK V1.05](http://www.google.com/search?q=Blitz3D+SDK+v1.05), and extract it to any folder folder.
 * Download [FASM for windows](http://flatassembler.net/download.php), and extract it to any folder folder.
@@ -13,7 +15,7 @@ Simple Online Help is placed [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK
 * Copy **B3D.dll** from *Blitz3D_SDK_V1.05\redist* folder and copy it **to folder with \*.asm files** (The compiled exe file will not run without B3D.dll library in exe file folder).
 * Run FASMW.EXE IDE from FASM archive and open one of the *.asm files from this SDK and select Run->Run from main menu for create execute and run example.
 
-**Note:** Also, you can set FASMW.EXE as default for open *.asm files in youre opeartin system. Then, when opening an *.asm file, it will immediately open in the FASMW IDE, which greatly simplifies work.
+**Note:** Also, you can set FASMW.EXE as default application for *.asm files in youre opeartin system. Then, when opening an *.asm file, it will immediately open it in the FASMW IDE, which greatly simplifies work.
 
 # SDK Description:
 
