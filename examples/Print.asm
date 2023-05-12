@@ -1,7 +1,7 @@
 ;******************************************************
 ;*                  Blitz3D on FASM                   *
 ;*                                                    *
-;*     Example of using b3dmacro.inc TextXY macro     *
+;*     Example of using b3dmacro.inc InText macro     *
 ;******************************************************
 
 format PE GUI 4.0
@@ -10,7 +10,7 @@ entry start
 include 'win32a.inc'
 include 'blitz3dsdk.inc'
 
-; ------------ константы и переменные -----------------
+; ------------ variables and arrays ----------------
 section '.data' data readable writeable
 
 include 'b3dmacro.inc'
@@ -35,7 +35,7 @@ strFormat db 'EBP pointer is: %d ESP pointer is: %d',0
 strBuffer rb 256
 val dd 0
 
-; ------------------------- код ------------------------
+; --------------------- Code -----------------------
 section '.code' code readable executable
 
 start:
@@ -70,22 +70,22 @@ main_loop:
       cinvoke bbRenderWorld, 1      ; Render world to buffer
 
 
-      TextXY 1, 1, 'Class of cube is: %s', [class_name]
+      InText 1, 1, 'Class of cube is: %s', [class_name]
 
       cinvoke bbText,   1, 20, strBuffer, BBFALSE, BBFALSE
 
 
       cinvoke bbEntityYaw, [cube]
       fistp [val]  ; float to integer
-      TextXY 0, 40, 'Cube Yaw:   %i', [val]
+      InText 0, 40, 'Cube Yaw:   %i', [val]
       cinvoke bbEntityPitch, [cube]
       fistp [val]  ; float to integer
-      TextXY 0, 50, 'Cube Pitch: %i', [val]
+      InText 0, 50, 'Cube Pitch: %i', [val]
       cinvoke bbEntityRoll, [cube]
       fistp [val]  ; float to integer
-      TextXY 0, 60, 'Cube Roll:  %i', [val]
+      InText 0, 60, 'Cube Roll:  %i', [val]
 
-      TextXY 0, 100, 'Example of printg values from macro: %d %X %x %s', -24, 0xC0DE0ACE, 0x0DECADE, string
+      InText 0, 100, 'Example of printg values from macro: %d %X %x %s', -24, 0xC0DE0ACE, 0x0DECADE, string
 
       cinvoke bbFlip, BBTRUE       ; Flip buffers
       jmp main_loop;

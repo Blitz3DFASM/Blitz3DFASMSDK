@@ -8,7 +8,7 @@ entry start
 include 'win32a.inc'
 include 'blitz3dsdk.inc'
 
-; ------------ константы и переменные -----------------
+; ------------ variables and arrays ----------------
 section '.data' data readable writeable
 
 camera BBCamera 0
@@ -26,7 +26,7 @@ title db 'Blitz3D 2D Graphics Exmple on FASM', 0
 exit db 'Do you really want to exit?', 0
 empty_str db 0
 
-; ------------------------- код ------------------------
+; --------------------- Code -----------------------
 section '.code' code readable executable
 
 start:

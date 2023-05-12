@@ -8,7 +8,7 @@ entry start
 include 'win32a.inc'
 include 'blitz3dsdk.inc'
 
-; ------------ константы и переменные -----------------
+; ------------ variables and arrays -----------------
 section '.data' data readable writeable
 
 buffer BBCanvas 0
@@ -24,7 +24,7 @@ text db 'Class of cube is: ', 0
 empty_str db 0
 class_name dd 0      ; Pointer to string
 
-; ------------------------- код ------------------------
+; --------------------- Code -----------------------
 section '.code' code readable executable
 
 start:
