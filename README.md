@@ -1,7 +1,8 @@
 # Blitz3D FASM SDK
 
-Blitz3D SDK for Flat Assembler x86  
-Simple [Online Help](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm)
+[Blitz3D](https://blitzresearch.itch.io/blitz3d) SDK for [Flat Assembler x86](https://flatassembler.net/). This SDK can make learning Assembly X86 language more fun.
+
+Simple Online Help is placed [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm)
 
 # How to use
 
@@ -11,7 +12,7 @@ Simple [Online Help](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_
 * Copy **B3D.dll** from *Blitz3D_SDK_V1.05\redist* folder and copy it **to folder with \*.asm files** (The compiled exe file will not run without this library).
 * Run FASMW.EXE IDE from FASM archive and open one of the *.asm files from this SDK and select Run->Run from main menu for create execute and run example.
 
-**Note:** Also, you can set FASMW as default for asm files. Then, when opening an *.asm file, it will immediately open in the FASMW environment, which greatly simplifies the work.
+**Note:** Also, you can set FASMW.EXE as default for open *.asm files in youre opeartin system. Then, when opening an *.asm file, it will immediately open in the FASMW IDE, which greatly simplifies work.
 
 # SDK Description:
 
