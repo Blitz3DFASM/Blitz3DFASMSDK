@@ -27,7 +27,7 @@ main_loop:
      rand [b],255
      cinvoke bbColor, [r], [g], [b]
 
-     ; Draw a random oval
+     ; Put a pixel to random position
      rand [x],800
      rand [y],600
      cinvoke bbPlot, [x],[y]
