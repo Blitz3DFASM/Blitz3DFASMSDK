@@ -4,6 +4,8 @@
 
 Simple Online Help is placed [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm)
 
+Blitz3D SDK (B3D.dll) disadvantages [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/main.htm). Read before use this SDK.
+
 # How to use
 
 ![B3DFASMSDK](https://github.com/Blitz3DFASM/Blitz3DFASMSDK/assets/133161792/3ee654fe-ede5-41b8-82ec-f4844ac47074)
