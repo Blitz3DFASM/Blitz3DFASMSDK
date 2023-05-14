@@ -22,7 +22,7 @@ Blitz3D SDK (B3D.dll) disadvantages [here](https://blitz3dfasm.github.io/Blitz3D
 # SDK Description:
 
 SDK contains files:
-* \INCLUDE
+* \INCLUDE - contains files that need to be moved to the FASM\INCLUDE folder.
     * 3D.ico - default icon (It is spelled out in the res.inc file)   
     * b3d.inc - headers of b3d.dll
     * blitz3dsdk.inc - contains Blitz3D constants like key codes, data types and other constants 
@@ -31,6 +31,7 @@ SDK contains files:
     * res.inc - contain resources description
 * \examples - contain a few examples
 * \help\asm_commands - contain few examples from help that match the commands in the [Documentation repository](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm).
+* \media - contains media files like: sounds, images, models, textures, which are used in the examples located in the help\ folder
 
 # Typical Blitz3D Assembler x86 appliction source code
 
