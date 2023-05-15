@@ -1,10 +1,10 @@
 # Blitz3D FASM SDK
 
-[Blitz3D](https://blitzresearch.itch.io/blitz3d) SDK for [Flat Assembler x86](https://flatassembler.net/). This SDK can make learning Assembly X86 language more fun.
+[Blitz3D SDK](https://blitzresearch.itch.io/blitz3d) for [Flat Assembler x86](https://flatassembler.net/). This SDK can make learning Assembly X86 language more fun.
 
-Simple Online Help is placed [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/index.htm)
+Simple Online Help is placed [here](https://blitz3dfasm.github.io/FASM_B3D_SDK_HELP/help/asm_commands/index.htm)
 
-Blitz3D SDK (B3D.dll) disadvantages [here](https://blitz3dfasm.github.io/Blitz3DFASMSDK_HELP/help/asm_commands/main.htm). Read before use this SDK.
+Blitz3D SDK (B3D.dll) disadvantages [here](https://blitz3dfasm.github.io/FASM_B3D_SDK_HELP/help/asm_commands/main.htm). Read before use this SDK.
 
 # How to use
 
