@@ -49,7 +49,7 @@ The approach of dividing the code into sections allows you to make the applicati
 
 A typical Blitz3D SDK application has the following structure:
 * Before start working with SDK, need to invoke bbBeginBlitz3D at first
-* Next, if you use graphics, you need to create a window by bbGraphics3D, 640, 480, 32, 3 Then some custom code follows.
+* Next, if you use graphics, you need to create a window by bbGraphics3D invoke, then some custom code follows.
 * At the end, when exiting the application, need to call bbEndBlitz3D and invoke ExitProcess
 
 While we are not considering the Blitz3D code and functions itself, this is only a description of the assembler code structure of typical Windows application.
