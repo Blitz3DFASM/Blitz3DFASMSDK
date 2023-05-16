@@ -1,13 +1,7 @@
-# Binary mode for images
-*.bmp binary
-*.png binary
-*.jpg binary
-*.gif binary
-
-# Определение языка для файлов
+# Language description
 *.txt text linguist-language=Text
 *.html text linguist-language=HTML
-*.asm text linguist-language=Assembly
-*.inc text linguist-language=Assembly
+*.asm text linguist-language=Assembly x86
+*.inc text linguist-language=Assembly x86
 *.exe binary linguist-language=Execute files
 *.dll binary linguist-language=Execute files
