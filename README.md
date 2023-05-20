@@ -287,6 +287,12 @@ Example of using (this code is used in almost every example):
 
 # x87 FPU Basics
 
+## Useful links
+
+Float <-> hex and double <-> hex [Online converter]([https://blitzresearch.itch.io/blitz3d](https://gregstoll.com/~gregstoll/floattohex/))
+
+[Online Assembler disassembler](https://shell-storm.org/online/Online-Assembler-and-Disassembler/) will help find out how many bytes an instruction takes
+
 ## Loading values to FPU
 
 The FPU does not allow loading values into itself directly, loading data is only possible from a memory cell.
