@@ -233,3 +233,101 @@ The *fptan* instruction pushes two values on the top of the stack: sine (sin(x))
       fptan
       fstp	ST0               ; remove cos(x)
       fstp  dword [result]    ; save sin(x)
+      
+## Rnd(from , to) function
+
+This assembler code:
+
+      ; Rand example
+      include "blitz3d.inc"
+
+      val dd 0
+
+      rnd_state dd 0x1234
+      _1_div_65536 dd 0x37800000     ; dd    37800000h = 1f/65536f = 0.0000152587891f
+      _0_5_div_65356 dd 0x37000000   ; dd    37000000h = 0.5f/65536f  = 0.00000762939453f
+
+      Rnd:
+            push      ecx
+            push      esi
+            mov       esi,[rnd_state] ; get rnd_state
+            mov       eax,esi
+            cdq
+            mov       ecx,0000ADC8h   ; constant RND_Q=44488
+            idiv      ecx
+            mov       eax,5E4789C9h   ; constant 1581746633
+            mov       ecx,edx
+            imul      esi
+            sar       edx,14 ;0Eh
+            imul      ecx,0000BC8Fh   ; constant RND_A=48271
+            mov       eax,edx
+            shr       eax,31; 1Fh
+            add       edx,eax
+            lea       eax,[edx+edx*4]
+            lea       eax,[edx+eax*4]
+            lea       eax,[eax+eax*8]
+            lea       eax,[eax+eax*2]
+            shl       eax,1
+            sub       eax,edx
+            lea       edx,[eax+eax*2]
+            sub       ecx,edx
+            mov       [rnd_state],ecx ; save seed
+            pop       esi
+            jns       rnd_sate_less_than_zero ; if rnd_state < 0 
+            add       ecx,7FFFFFFFh   ; constant RND_M=2147483647
+            mov       [rnd_state],ecx ; save seed
+      rnd_sate_less_than_zero:
+            and       ecx,0000FFFFh           ; rnd_state & 65535
+            mov       [esp+00h],ecx
+            fild      dword [esp+00h]         ; rnd_state & 65536
+            fmul      dword [_1_div_65536]
+            fadd      dword [_0_5_div_65356]
+            fld       dword [esp+0Ch]  ; to
+            fsub      dword [esp+08h]  ; to-from
+            fmulp     ST1,ST
+            fadd      dword [esp+08h]  ; + from
+            pop       ecx
+            retn      8
+
+      start:
+           ; Set The Graphic Mode
+           cinvoke bbGraphics, 400, 300, 0, 0
+
+           InPrint "Assembler x86 Rnd example"
+           InPrint "RndSeed = %d", [rnd_state]
+
+           ; Generate 20 random numbers between 1 and 100
+           mov ecx, 20
+      next_value:
+           push ecx
+           push dword 100f   ; to
+           push dword 50f    ; from
+           call Rnd
+           fistp dword [val] ; get value from FPU
+           pop ecx
+           push ecx
+           InPrint "Random value no %d = %d", ecx, [val]
+           pop ecx
+           dec ecx
+           jns next_value   ; Use jns for 20..0 cycles, or jnz for 20..1 cycles
+
+           cinvoke bbFlip   ; Show screen buffer
+           cinvoke bbWaitKey  
+
+Fully equivalent to blitz3d code:
+
+      Print "Blitz3D Rnd example"     
+      Print "RndSeed = "+RndSeed()
+
+      For i=20 To 0 Step -1:
+         val = Rnd(50,100)
+         Print "Random value no " + i + " = " + val
+      Next
+
+      WaitKey
+
+
+
+The results of the operation in blitz3d and assembler are equivalent:
+![изображение](https://github.com/Blitz3DFASM/Blitz3DFASMSDK/assets/133161792/d8924c72-5b42-48d7-8311-ce36e8883e28)
+
