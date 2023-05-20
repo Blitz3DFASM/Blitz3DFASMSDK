@@ -204,6 +204,29 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
         
 # A simple Blitz3D Basic functions replacement on Assembly x86 language:
 
+## If Then Else
+
+In Assembly language, branching constructions such as If Then Endif are created using comparison commands and conditional jump commands.
+
+For example, the following code in Blitz3D:
+
+      If 5 > 2 Then 
+         Print "5>2" 
+      Else
+         Print "5<=2" 
+      EndIf
+
+is equivalent to the following code in Assembly:
+
+         mov eax, 5 
+         mov ebx, 2 
+         ja after 
+         InPrint "5<=2" 
+         jmp end_if 
+      after:
+         InPrint "5>2" 
+      end_if:
+
 ## Null (value)
 
 In Assembly language, Null is simply replaced by 0.
