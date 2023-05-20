@@ -204,6 +204,25 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
         
 # A simple Blitz3D Basic functions replacement on Assembly x86 language:
 
+## Null (value)
+
+In Assembly language, Null is simply replaced by 0.
+
+Also is possible to create a constant:
+
+      Null equ 0
+
+and use it in the code anywere:
+
+      cmp [object], Null 
+      je object_is_null
+
+If say more specific, Null is zero adress value, and means the of an object that no exist. It is used to determine whether an object exists or whether it was created after a certain function was executed. Assembly language is not a high-level language. In it, an object is simply an address (pointer) to the memory location where data about the object is stored. An object cannot exist at address zero, which is the beginning of the code. Therefore, the null address is accepted as an indication that there is no object.
+
+For example, when using certain functions, it is necessary to specify a parent object, even if one does not exist, like CreateCube, CreateCone, CreateCamera etc... In such cases as with a rose, you can use 0.
+
+      cinvoke bbCreateSphere, 7, 0  ; create sphere with detail level = 7, parent = null
+
 ## Goto label
 
 The equivalent of Goto in assembler is the *jmp* instruction.
@@ -231,7 +250,9 @@ Example of using (this code is used in almost every example):
       include "blitz3d.inc"
 
 # A simple Blitz3D Maths functions replacement on Assembly x86 language:
- 
+
+## Sin, Cos and Tan
+
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
 
       pi_div_180   dd	0.0174533f	; float pi/180 = 0.0174533f or 3C8EFA35h in hex
@@ -256,8 +277,8 @@ This value is needed to calculate trigonometric functions in degrees.
 
 The *fptan* instruction pushes two values on the top of the stack: sine (sin(x)) and cosine (cos(x)). The cosine (cos(x)) is not used in this code and is simply removed from the stack with "fstp st(0)".
 
-      fld	dword ptr [pi_div_180]
-      fmul	dword ptr [degrees_value]
+      fld	dword [pi_div_180]
+      fmul	dword [degrees_value]
       fptan
       fstp	ST0               ; remove cos(x)
       fstp  dword [result]    ; save sin(x)
