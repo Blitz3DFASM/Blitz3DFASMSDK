@@ -227,6 +227,19 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
+## Const name = value
+
+In assembly language, constants are not allocated memory in special place; values are simply substituted into the specified places during the assembly process (in instructions, data cells, etc...).
+
+Blitz3D code:
+
+      Const name = 123
+
+Assembler equivalent:
+
+      name equ 123
+    
+      
 ## Null (value)
 
 In Assembly language, Null is simply replaced by 0.
