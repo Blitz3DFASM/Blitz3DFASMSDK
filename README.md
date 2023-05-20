@@ -222,6 +222,14 @@ Fully equivalent to blitz3d code:
       Print "This line never gets printed .." 
       .label1 
 
+## Include file
+
+FASM has the *include* directive that allows to insert the contents of another source file into the code. Note that *include* is not an instruction of the assembly language, it is a FASM compiler directive, and it is only used during the assembly process.
+
+Example of using (this code is used in almost every example):
+
+      include "blitz3d.inc"
+
 # A simple Blitz3D Maths functions replacement on Assembly x86 language:
  
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
