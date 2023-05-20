@@ -289,9 +289,8 @@ Example of using (this code is used in almost every example):
 
 ## Useful links
 
-Float <-> hex and double <-> hex [Online converter]([https://blitzresearch.itch.io/blitz3d](https://gregstoll.com/~gregstoll/floattohex/))
-
-[Online Assembler disassembler](https://shell-storm.org/online/Online-Assembler-and-Disassembler/) will help find out how many bytes an instruction takes
+Float <-> hex and double <-> hex [Online converter](https://gregstoll.com/~gregstoll/floattohex/)  
+[Online Assembler and Disassembler](https://shell-storm.org/online/Online-Assembler-and-Disassembler/) will help find out how many bytes an instruction takes
 
 ## Loading values to FPU
 
