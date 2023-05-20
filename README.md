@@ -234,7 +234,7 @@ The *fptan* instruction pushes two values on the top of the stack: sine (sin(x))
       fstp	ST0               ; remove cos(x)
       fstp  dword [result]    ; save sin(x)
       
-## Rnd(from , to) function
+## Rnd(from , to)
 
 This assembler code:
 
