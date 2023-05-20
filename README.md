@@ -287,6 +287,21 @@ Example of using (this code is used in almost every example):
 
 # A simple Blitz3D Maths functions replacement on Assembly x86 language:
 
+## Loading values to FPU
+
+The FPU does not allow loading values into itself directly, loading data is only possible from a memory cell.
+
+      value dd 123.4567f
+      ...
+      code_start:
+            fld [value]
+
+In some cases, it is more convenient to use a stack instead of variables to load values.
+
+      push 123.4567f         ; load float value to stack
+      fld dword [esp]        ; load value from satck to FPU
+      add esp, 4             ; clear stack (remove 4 bytes)
+
 ## Sin, Cos and Tan
 
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
