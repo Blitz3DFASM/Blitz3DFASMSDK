@@ -146,7 +146,7 @@ While we are not considering the Blitz3D code and functions itself, this is only
            ICON equ '3D.ico'
            include 'res.inc'                      
           
-# Using simplified code with blitz3d.inc
+# Simplified code with using blitz3d.inc
 
 Using blitz3d.inc allows to greatly simplify the code.
 
@@ -348,13 +348,13 @@ This assembler code:
             mov       eax,edx
             shr       eax,31; 1Fh
             add       edx,eax
-            lea       eax,[edx+edx*4]
-            lea       eax,[edx+eax*4]
-            lea       eax,[eax+eax*8]
-            lea       eax,[eax+eax*2]
-            shl       eax,1
-            sub       eax,edx
-            lea       edx,[eax+eax*2]
+            lea       eax,[edx+edx*4] ; 5
+            lea       eax,[edx+eax*4] ; 1 + 5*4 = 21
+            lea       eax,[eax+eax*8] ; 21 * 9 = 189
+            lea       eax,[eax+eax*2] ; 189 * 3 = 567
+            shl       eax,1           ; 567 * 2 = 1134
+            sub       eax,edx         ; 1134 - 1 = 1133
+            lea       edx,[eax+eax*2] ; 1133 * 3 = 3399 ; * RND_R=3399 
             sub       ecx,edx
             mov       [rnd_state],ecx ; save seed
             pop       esi
