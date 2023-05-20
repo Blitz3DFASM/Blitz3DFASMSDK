@@ -202,7 +202,27 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
              jmp main_loop;
         exit_from_main_loop:  
         
- # A simple Blitz3D Base functions replacement on Assembly x86 language:
+# A simple Blitz3D Basic functions replacement on Assembly x86 language:
+
+## Goto label
+
+The equivalent of Goto in assembler is the *jmp* instruction.
+
+In Blitz3D, labels are marked by a period at the beginning of the line. In assembly language, labels are marked by a colon at the end of the label name, and an instruction may follow the label or data may be specified.
+
+This assembler code:
+
+         jmp label1:
+         InPrint "This line never gets printed .." 
+      label1:
+
+Fully equivalent to blitz3d code:
+
+      Goto label1 
+      Print "This line never gets printed .." 
+      .label1 
+
+# A simple Blitz3D Maths functions replacement on Assembly x86 language:
  
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
 
