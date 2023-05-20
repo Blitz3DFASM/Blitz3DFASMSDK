@@ -206,30 +206,30 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
  
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
 
-pi_div_180   dd	3C8EFA35h			; pi/180 = 0.0174533f
+      pi_div_180   dd	0.0174533f	; float pi/180 = 0.0174533f or 3C8EFA35h in hex
 
 This value is needed to calculate trigonometric functions in degrees.
 
 ## Sin(degrees_value)
 
-   fld	dword [pi_div_180]
-  	fmul	dword [degrees_value]
-  	fsin
-   fstp  dword [result] 
+      fld	dword [pi_div_180]
+      fmul	dword [degrees_value]
+      fsin
+      fstp  dword [result] 
    
 ## Cos(degrees_value)
 
-   fld	dword [pi_div_180]
-  	fmul	dword [degrees_value]
-  	fcos
-   fstp  dword [result] 
+      fld	dword [pi_div_180]
+      fmul	dword [degrees_value]
+      fcos
+      fstp  dword [result] 
 
 ## Tan(degrees_value)
 
 The *fptan* instruction pushes two values on the top of the stack: sine (sin(x)) and cosine (cos(x)). The cosine (cos(x)) is not used in this code and is simply removed from the stack with "fstp st(0)".
 
-   fld	dword ptr [pi_div_180]
-  	fmul	dword ptr [degrees_value]
-  	fptan
-   fstp	ST0               ; remove cos(x)
-   fstp  dword [result]    ; save sin(x)
+      fld	dword ptr [pi_div_180]
+      fmul	dword ptr [degrees_value]
+      fptan
+      fstp	ST0               ; remove cos(x)
+      fstp  dword [result]    ; save sin(x)
