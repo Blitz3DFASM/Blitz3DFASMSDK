@@ -285,7 +285,7 @@ Example of using (this code is used in almost every example):
 
       include "blitz3d.inc"
 
-# A simple Blitz3D Maths functions replacement on Assembly x86 language:
+# x87 FPU Basics
 
 ## Loading values to FPU
 
@@ -298,9 +298,15 @@ The FPU does not allow loading values into itself directly, loading data is only
 
 In some cases, it is more convenient to use a stack instead of variables to load values.
 
-      push 123.4567f         ; load float value to stack
-      fld dword [esp]        ; load value from satck to FPU
-      add esp, 4             ; clear stack (remove 4 bytes)
+      push 123.4567f         ; 0x68D5E9F642 - load float value to stack
+      fld dword [esp]        ; 0xD90424 - load value from stack to FPU
+      add esp, 4             ; 0x83C404 - clear stack (remove 4 bytes)
+      
+To clear the stack, instead of add esp,4 , is possible to use the pop register instruction, it takes 1 byte, unlike add, which takes 3 bytes. But at the same time, data is lost in the register in which the pop is made.
+
+      pop eax                ; 0x58 - only one byte instead 0x83C404 of add esp, 4
+
+# A simple Blitz3D Maths functions replacement on Assembly x86 language:
 
 ## Sin, Cos and Tan
 
