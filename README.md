@@ -202,9 +202,11 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
              jmp main_loop;
         exit_from_main_loop:  
         
-# A simple Blitz3D Basic functions replacement on Assembly x86 language:
+## A simple Blitz3D functions replacement writed on Assembly x86 language:
 
-## If Then Else
+## Basic functions
+
+### If Then Else
 
 In Assembly language, branching constructions such as If Then Endif are created using comparison commands and conditional jump commands.
 
@@ -227,7 +229,7 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
-## Const name = value
+### Const name = value
 
 In assembly language, constants are not allocated memory in special place; values are simply substituted into the specified places during the assembly process (in instructions, data cells, etc...).
 
@@ -238,9 +240,18 @@ Blitz3D code:
 Assembler equivalent:
 
       name equ 123
-    
-      
-## Null (value)
+
+### True
+
+In Aseembler, this constant is named *BBTRUE* , has a dword size, is equal to 1 and it is located in "blitz3dsdk.inc"
+Also is possible to use just 1 instead of named constant. However, this will make the code less clear, because then it will lose the meaning that the given value is a boolean.
+
+### False 
+
+In Aseembler, this constant is named *BBFALSE* , has a dword size, is equal to 0 and it is located in "blitz3dsdk.inc"
+Also is possible to use just 0 instead of named constant. However, this will make the code less clear, because then it will lose the meaning that the given value is a boolean.
+
+### Null
 
 In Assembly language, Null is simply replaced by 0.
 
@@ -285,14 +296,14 @@ Example of using (this code is used in almost every example):
 
       include "blitz3d.inc"
 
-# x87 FPU Basics
+## x87 FPU Basics
 
-## Useful links
+### Useful links
 
 Float <-> hex and double <-> hex [Online converter](https://gregstoll.com/~gregstoll/floattohex/)  
 [Online Assembler and Disassembler](https://shell-storm.org/online/Online-Assembler-and-Disassembler/) will help find out how many bytes an instruction takes
 
-## Loading values to FPU
+### Loading values to FPU
 
 The FPU does not allow loading values into itself directly, loading data is only possible from a memory cell.
 
@@ -317,9 +328,9 @@ To clear the stack, instead of add esp,4 , is possible to use the pop register i
 
       pop eax                ; 0x58 - only one byte instead 0x83C404 of add esp, 4
 
-# A simple Blitz3D Maths functions replacement on Assembly x86 language:
+## Maths functions
 
-## Sin, Cos and Tan
+### Sin, Cos and Tan
 
 For Sin, Cos Tan functions is need's to create coefficinet varible (in the data section or in the non-executable fragment of the code section). Varible must be contain pi/180 value:
 
@@ -327,21 +338,21 @@ For Sin, Cos Tan functions is need's to create coefficinet varible (in the data 
 
 This value is needed to calculate trigonometric functions in degrees.
 
-## Sin(degrees_value)
+### Sin(degrees_value)
 
       fld	dword [pi_div_180]
       fmul	dword [degrees_value]
       fsin
       fstp  dword [result] 
    
-## Cos(degrees_value)
+### Cos(degrees_value)
 
       fld	dword [pi_div_180]
       fmul	dword [degrees_value]
       fcos
       fstp  dword [result] 
 
-## Tan(degrees_value)
+### Tan(degrees_value)
 
 The *fptan* instruction pushes two values on the top of the stack: sine (sin(x)) and cosine (cos(x)). The cosine (cos(x)) is not used in this code and is simply removed from the stack with "fstp st(0)".
 
@@ -351,7 +362,7 @@ The *fptan* instruction pushes two values on the top of the stack: sine (sin(x))
       fstp	ST0               ; remove cos(x)
       fstp  dword [result]    ; save sin(x)
       
-## Rnd(from , to)
+### Rnd(from , to)
 
 This assembler code:
 
