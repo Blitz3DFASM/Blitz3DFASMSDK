@@ -375,19 +375,19 @@ The FPU does not allow loading values into itself directly, loading data is only
 
 In some cases, it is more convenient to use a stack instead of variables to load values.
 
-      push 123.4567f         ; 0x68D5E9F642 - load float value to stack
-      fld dword [esp]        ; 0xD90424 - load value from stack to FPU
-      add esp, 4             ; 0x83C404 - clear stack (remove 4 bytes)
+      push 123.4567f         ; 68 D5 E9 F6 42 - load float value to stack
+      fld dword [esp]        ; D9 04 24 - load value from stack to FPU
+      add esp, 4             ; 83 C4 04 - clear stack (remove 4 bytes)
 
 This method is also convenient for loading standard registers into the FPU.
 
-      push eax               ; 0x50 - load integer value eax to stack
-      fild dword [esp]       ; 0xD90424 - load integer value from stack to FPU
-      add esp, 4             ; 0x83C404 - clear stack (remove 4 bytes)
+      push eax               ; 50 - load integer value eax to stack
+      fild dword [esp]       ; D9 04 24 - load integer value from stack to FPU
+      add esp, 4             ; 83 C4 04 - clear stack (remove 4 bytes)
 
 To clear the stack, instead of add esp,4 , is possible to use the pop register instruction, it takes 1 byte, unlike add, which takes 3 bytes. But at the same time, data is lost in the register in which the pop is made.
 
-      pop eax                ; 0x58 - only one byte instead 0x83C404 of add esp, 4
+      pop eax                ; 58 - only one byte instead 3 bytes: 83 C4 04 of add esp, 4
 
 ## Maths functions
 
@@ -401,17 +401,17 @@ This value is needed to calculate trigonometric functions in degrees.
 
 ### Sin(degrees_value)
 
-      fld	dword [pi_div_180]
-      fmul	dword [degrees_value]
-      fsin
-      fstp  dword [result] 
+      fld	dword [pi_div_180]      ; D9 05 xx xx xx xx
+      fmul	dword [degrees_value]   ; D8 0D xx xx xx xx
+      fsin                          ; D9 FE
+      fstp  dword [result]          ; D9 1D xx xx xx xx 
    
 ### Cos(degrees_value)
 
-      fld	dword [pi_div_180]
-      fmul	dword [degrees_value]
-      fcos
-      fstp  dword [result] 
+      fld	dword [pi_div_180]      ; D9 05 xx xx xx xx
+      fmul	dword [degrees_value]   ; D8 0D xx xx xx xx
+      fcos                          ; D9 FF 
+      fstp  dword [result]          ; D9 1D xx xx xx xx 
 
 ### Tan(degrees_value)
 
