@@ -206,7 +206,7 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
 
 ## Basic functions
 
-### If Then Else
+### If .. Then .. Else
 
 In Assembly language, branching constructions such as If Then Endif are created using comparison commands and conditional jump commands.
 
@@ -240,6 +240,40 @@ Blitz3D code:
 Assembler equivalent:
 
       name equ 123
+
+### Type .. Filed .. End Type .. New
+
+Instead of TYPE's in assembly language, is possible to use structures. That looks like this:
+
+      ; Structure declaration
+      struc color r, g, b {
+              .red dd r
+              .green dd g
+              .blue dd b
+      }
+
+      ; Create data from structure
+      cls_color color 255, 128, 64
+
+      ; Data modification
+      mov [color.red], 128    
+
+Which is *almost* equivalent to the Blitz3D code:
+
+      ; Structure declaration
+      Type my_color
+      Field red
+      Field green
+      Field blue
+      End Type 
+
+      ; Create data from structure
+      cls_color.my_color = New my_color
+      cls_color\red = 255
+      cls_color\green = 128
+      cls_color\blue = 64
+      
+Blitz3D works with Types as *dynamic data arrays*, while in assembler structures is necessary to allocate the exact amount of memory for data. 
 
 ### True
 
