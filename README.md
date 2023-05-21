@@ -246,11 +246,11 @@ Assembler equivalent:
 Instead of TYPE's in assembly language, is possible to use structures. That looks like this:
 
       ; Structure declaration
-      struct color r, g, b {
-              .red dd r
-              .green dd g
-              .blue dd b
-      }
+      struct color
+              red dd ?
+              green dd ?
+              blue dd ?
+      ends
 
       ; Create data from structure
       cls_color color 255, 128, 64
