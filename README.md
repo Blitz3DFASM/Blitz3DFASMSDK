@@ -202,7 +202,7 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
              jmp main_loop;
         exit_from_main_loop:  
         
-## A simple Blitz3D functions replacement writed on Assembly x86 language:
+# A simple Blitz3D functions replacement writed on Assembly x86 language:
 
 ## Basic functions
 
@@ -274,6 +274,33 @@ Which is *almost* equivalent to the Blitz3D code:
       cls_color\blue = 64
       
 Blitz3D works with Types as *dynamic data arrays*, while in assembler structures is necessary to allocate the exact amount of memory for data. 
+
+### Case
+
+This is a rather difficult section for beginner programmers.
+In Assembly language, the CASE construct is a jump table:
+
+      case_table:
+           dd value_0
+           dd value_1
+           dd value_2
+
+      ...
+
+           mov eax, value
+           jmp dword [case_table+eax*4]
+      value_0:     
+           InPrint "You pressed one"
+           jmp break
+      value_1:
+           InPrint "You pressed two"
+           jmp break
+      value_2:
+           InPrint "You pressed three"
+      break:
+
+This works much faster than the cmp + jmp chain.
+If use call instead of jmp, then can essentially make a VMT table as in high-level languages.
 
 ### True
 
