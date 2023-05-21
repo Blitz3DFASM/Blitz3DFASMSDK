@@ -246,7 +246,7 @@ Assembler equivalent:
 Instead of TYPE's in assembly language, is possible to use structures. That looks like this:
 
       ; Structure declaration
-      struc color r, g, b {
+      struct color r, g, b {
               .red dd r
               .green dd g
               .blue dd b
