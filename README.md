@@ -207,7 +207,7 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
 ## Basic functions
 
 * [If Then Else EndIF](#if--then--else--endif)
-* [Select Case Default](#select--case--default--end-select)
+* [Select Case Default End Select](#select--case--default--end-select)
 * [Const](#const)
 * [Type Filed End Type New](#type--filed--end-type--new)
 
