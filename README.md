@@ -278,7 +278,8 @@ Blitz3D works with Types as *dynamic data arrays*, while in assembler structures
 ### (Switch) Select .. Case .. Default
 
 This is a rather difficult section for beginner programmers.
-In Assembly language, the CASE construct is a jump table:
+The Select-Case construct in Blitz3d is slightly different from the classic Switch-Case construct like in C++\C#\Java languages.
+In Assembly language, for Switch Case construct is used a jump table:
 
            rand [mission], 0, 7   ; random mission number
            InPrint "Mission %d:", [mission]
