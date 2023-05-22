@@ -207,7 +207,7 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
 ## Basic functions
 
 * [If Then Else EndIF](#if--then--else--endif)
-* [Select Case Default](#select--case--default)
+* [Select Case Default](#select--case--default--end-select)
 * [Const](#const)
 * [Type Filed End Type New](#type--filed--end-type--new)
 
@@ -234,7 +234,7 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
-### Select .. Case .. Default
+### Select .. Case .. Default .. End Select
 
 This is a rather difficult section for beginner programmers.
 The Select-Case construct in Blitz3d is slightly different from the classic Switch-Case construct like in C++\C#\Java languages.
