@@ -206,7 +206,12 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
 
 ## Basic functions
 
-### If .. Then .. Else
+* [If Then Else EndIF](#if--then--else--endif)
+* [Select Case Default](#select--case--default)
+* [Const](#const)
+* [Type Filed End Type New](#type--filed--end-type--new)
+
+### If .. Then .. Else .. EndIF
 
 In Assembly language, branching constructions such as If Then Endif are created using comparison commands and conditional jump commands.
 
@@ -229,7 +234,53 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
-### Const name = value
+### Select .. Case .. Default
+
+This is a rather difficult section for beginner programmers.
+The Select-Case construct in Blitz3d is slightly different from the classic Switch-Case construct like in C++\C#\Java languages.
+In the initial stages, you can simply use the cmp + jmp chains to replace the Select-Case construct.
+But in practice, in Assembly language used a more complex and more efficient construction, which includes a jump table.
+Full exaple [here](/help/asm_commands/2D_Commands/Basic/Select_Case_Default.asm)
+
+           rand [mission], 0, 7   ; random mission number
+           InPrint "Mission %d:", [mission]
+           mov eax,[mission]
+
+           cmp eax,(case_table_end-case_table)/4 ; 5
+           jae default
+           jmp dword [case_table+eax*4]
+
+      mission dd 0
+
+      case_table:
+           dd case_0
+           dd case_1
+           dd case_2
+           dd case_3
+           dd case_4
+      case_table_end:
+
+      case_1:
+           InPrint "Your mission is to get the plutonium and get out alive!"
+           jmp end_select
+      case_2:
+           InPrint "Your mission is to destroy all enemies!"
+           jmp end_select
+      case_3:
+           InPrint "Your mission is to steal the enemy building plans!"
+           jmp end_select
+      case_4:
+           InPrint "This is final mission!"
+           jmp end_select
+      case_0:
+      default:
+           InPrint "Information about mission %d is not found!", eax
+      end_select:   
+
+This may works much faster than the cmp + jmp chain.
+If use call instead of jmp, then can essentially make a VMT table as in high-level languages.
+
+### Const
 
 In assembly language, constants are not allocated memory in special place; values are simply substituted into the specified places during the assembly process (in instructions, data cells, etc...).
 
@@ -274,50 +325,6 @@ Which is *almost* equivalent to the Blitz3D code:
       cls_color\blue = 64
       
 Blitz3D works with Types as *dynamic data arrays*, while in assembler structures is necessary to allocate the exact amount of memory for data. 
-
-### (Switch) Select .. Case .. Default
-
-This is a rather difficult section for beginner programmers.
-The Select-Case construct in Blitz3d is slightly different from the classic Switch-Case construct like in C++\C#\Java languages.
-In Assembly language, for Switch Case construct is used a jump table:
-
-           rand [mission], 0, 7   ; random mission number
-           InPrint "Mission %d:", [mission]
-           mov eax,[mission]
-
-           cmp eax,(case_table_end-case_table)/4 ; 5
-           jae default
-           jmp dword [case_table+eax*4]
-
-      mission dd 0
-
-      case_table:
-           dd case_0
-           dd case_1
-           dd case_2
-           dd case_3
-           dd case_4
-      case_table_end:
-
-      case_1:
-           InPrint "Your mission is to get the plutonium and get out alive!"
-           jmp end_select
-      case_2:
-           InPrint "Your mission is to destroy all enemies!"
-           jmp end_select
-      case_3:
-           InPrint "Your mission is to steal the enemy building plans!"
-           jmp end_select
-      case_4:
-           InPrint "This is final mission!"
-           jmp end_select
-      case_0:
-      default:
-           InPrint "Information about mission %d is not found!", eax
-      end_select:   
-
-This may works much faster than the cmp + jmp chain.
-If use call instead of jmp, then can essentially make a VMT table as in high-level languages.
 
 ### True
 
