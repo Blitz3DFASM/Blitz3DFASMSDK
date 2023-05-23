@@ -8,7 +8,7 @@ Function returns the distance between centers of src_entity and dest_entity.
 
 The distance between two points in 3D space can be calculated by the formula:
 
-      float Vector_distance( const Vector &a, const Vector &b )const{
+      float Vector_distance( const Vector &a, const Vector &b ){
           float dx=a.x-b.x;
           float dy=a.y-b.y;
           float dz=a.z-b.z;
