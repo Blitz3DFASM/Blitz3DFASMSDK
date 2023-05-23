@@ -255,7 +255,7 @@ During the compilation process, the code above will be converted to this assembl
             test	ecx, ecx         ; 85 C9 - test, ecx is zero?
             jnz	if_block_start   ; 75 04 - if ecx == 0 goto if_block_start (+4 bytes from here)
             test	edx, edx         ; 85 D5 - test, edx is not zero?
-            jz 	L0040370D        ; 74 01 - if ecx != 0 goto end_if (+1 byte from here)
+            jz 	end_if           ; 74 01 - if ecx != 0 goto end_if (+1 byte from here)
        if_block_start:
             inc	ebx              ; 43 - ebx += 1
        end_if:
