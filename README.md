@@ -210,7 +210,10 @@ Among the shortcomings, it can also be noted that if you want to connect any oth
 * [Then](#if--then--else--endif)
 * [Else](#if--then--else--endif) 
 * [EndIF](#if--then--else--endif)
-* [Select Case Default End Select](#select--case--default--end-select)
+* [Select](#select--case--default--end-select)
+* [Case](#select--case--default--end-select)
+* [Default](#select--case--default--end-select)
+* [End Select](#select--case--default--end-select)
 * [Const](#const)
 * [Type Filed End Type New](#type--filed--end-type--new)
 
@@ -237,7 +240,7 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
-The FASM compiler has more advanced macroses located in extended windows headers (which end in 'x'), for example, win32ax.inc has a set of extended macros, for example: *.if .else .elseif .endif .while .endw .repeat .until* . Also file win32ax.inc is included in blitz3d.inc by default. This short example shows how to use this macroses, this is very similar to high-level programming languages.
+The FASM compiler has more advanced macroses located in *FASM\INCLUDE\MACRO\If.INC* file, which is included in win32ax.inc which in turn is included in blitz3d.inc. *IF.INC* has a set of extended macros, for example: *.if .else .elseif .endif .while .endw .repeat .until* . Also file win32ax.inc is included in blitz3d.inc by default. This short example shows how to use this macroses, this is very similar to high-level programming languages (HLL).
 
       .if eax<=100 & ( ecx | edx )
          inc ebx
