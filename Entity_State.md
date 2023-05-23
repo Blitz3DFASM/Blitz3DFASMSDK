@@ -4,7 +4,7 @@
 
 ### EntityDistance
 
-Function returns the distance between centers of src_entity and dest_entity. 
+Returns the distance between center points of src_entity and dest_entity. 
 
 The distance between two points in 3D space can be calculated by the formula:
 
@@ -17,8 +17,8 @@ The distance between two points in 3D space can be calculated by the formula:
 
 Which is equivalent in assembly language to:
 
-        mov     eax,a_xyz        ; Load pointer to the coordinates of point a into the eax register
-        mov     ecx,b_xyz        ; Load pointer to the coordinates of point b into the ecx register
+        mov     eax,a_xyz         ; Load pointer to the coordinates of point a into the eax register
+        mov     ecx,b_xyz         ; Load pointer to the coordinates of point b into the ecx register
         
         ; Сalculate the coordinates difference for each axis:
         fld     dword [ecx]       ; ST0 = a.x
