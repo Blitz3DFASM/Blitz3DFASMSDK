@@ -237,13 +237,13 @@ is equivalent to the following code in Assembly:
          InPrint "5>2" 
       end_if:
 
-The FASM compiler has advanced features, such as extended windows headers (which end in 'x'), for example, win32ax.inc has a set of extended macros, for example: .if .else .endif . Dy default file win32ax.inc is included in blitz3d.inc. This short example shows how to use this macroses, this is very similar to high-level programming languages.
+The FASM compiler has more advanced macroses located in extended windows headers (which end in 'x'), for example, win32ax.inc has a set of extended macros, for example: .if .else .endif . Also file win32ax.inc is included in blitz3d.inc by default. This short example shows how to use this macroses, this is very similar to high-level programming languages.
 
       .if eax<=100 & ( ecx | edx )
          inc ebx
       .endif
       
-During compilation process, code will be converted to this assembler instructions:
+During the compilation process, the code above will be converted to this assembler instructions:
 
             cmp	eax, 100         ; 83 F8 64 - compare eax and 100 (64h)
             ja 	end_if           ; 77 09 - if eax > 100 goto end_if 
