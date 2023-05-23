@@ -263,6 +263,14 @@ is equivalent to compare register with zero:
 
       .if ( eax == 0 | ebx == 0 )
 
+If need to compare a variable and a number, must specify the dimension:
+
+      .if dword [eax+object.y] <= 0 
+      
+**Note:** Comparing two variables is impossible, such code will lead to compilation error:
+
+      .if dword [eax+object.x] <= dword [eax+object.y]   
+
 ### Select .. Case .. Default .. End Select
 
 This is a rather difficult section for beginner programmers.
