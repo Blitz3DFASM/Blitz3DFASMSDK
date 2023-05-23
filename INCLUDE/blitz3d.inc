@@ -1,7 +1,7 @@
 format PE GUI 4.0
 entry _start
 
-include 'win32a.inc'
+include 'win32ax.inc'
 include 'blitz3dsdk.inc'
 
 section '.idata' import data readable writeable
