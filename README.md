@@ -462,12 +462,18 @@ This value is needed to calculate trigonometric functions in degrees.
 
 ### Sin(degrees_value)
 
+The *fsin* instruction calculates the sine of the number in ST0 and stores the result in the same register. 
+The operand is considered given in radians and cannot be greater than 2^63 or less than -2^63.
+
       fld	dword [pi_div_180]      ; D9 05 xx xx xx xx
       fmul	dword [degrees_value]   ; D8 0D xx xx xx xx
       fsin                          ; D9 FE
       fstp  dword [result]          ; D9 1D xx xx xx xx 
    
 ### Cos(degrees_value)
+
+The *fcos* instruction calculates the sine of the number in ST0 and stores the result in the same register. 
+The operand is considered given in radians and cannot be greater than 2^63 or less than -2^63.
 
       fld	dword [pi_div_180]      ; D9 05 xx xx xx xx
       fmul	dword [degrees_value]   ; D8 0D xx xx xx xx
@@ -476,13 +482,13 @@ This value is needed to calculate trigonometric functions in degrees.
 
 ### Tan(degrees_value)
 
-The *fptan* instruction pushes two values on the top of the stack: sine (sin(x)) and cosine (cos(x)). The cosine (cos(x)) is not used in this code and is simply removed from the stack with "fstp st(0)".
+The *fptan* instruction pushes two values on the top of the stack: ST1 contain the tan(x) and ST0 contain 1.
 
       fld	dword [pi_div_180]
       fmul	dword [degrees_value]
-      fptan
-      fstp	ST0               ; remove cos(x)
-      fstp  dword [result]    ; save sin(x)
+      fptan                         ; after fptan ST1 contain result and ST0 contain 1 
+      fstp	ST0                     ; remove 1 from stack
+      fstp  dword [result]          ; and save tan(x)
       
 ### Rnd(from , to)
 
