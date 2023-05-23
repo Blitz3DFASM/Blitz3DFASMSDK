@@ -539,8 +539,8 @@ This assembler code:
             and       ecx,0000FFFFh           ; rnd_state & 65535
             mov       [esp+00h],ecx
             fild      dword [esp+00h]         ; rnd_state & 65536
-            fmul      dword [_1_div_65536]
-            fadd      dword [_0_5_div_65356]
+            fmul      dword [_1_div_65536]    ; st0 = st0/65536  or st0 = st0*(1/65536) a little trick of using fmul to divide.
+            fadd      dword [_0_5_div_65356]  ; st0 = st0+(1/65536/2)
             fld       dword [esp+0Ch]  ; to
             fsub      dword [esp+08h]  ; to-from
             fmulp     ST1,ST
