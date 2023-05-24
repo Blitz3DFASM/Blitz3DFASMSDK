@@ -5,16 +5,16 @@
 format PE GUI 4.0
 entry start
 
-include 'win32a.inc'
+include 'win32ax.inc'
 include 'blitz3dsdk.inc'
 
-; ------------ константы и переменные -----------------
+; ------------ ГЄГ®Г­Г±ГІГ Г­ГІГ» ГЁ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ -----------------
 section '.data' data readable writeable
 
 buffer BBCanvas 0
 image BBCanvas 0
 
-; ------------------------- код ------------------------
+; ------------------------- ГЄГ®Г¤ ------------------------
 section '.code' code readable executable
 
 start:
