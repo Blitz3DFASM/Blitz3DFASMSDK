@@ -9,7 +9,7 @@ skip:
 if par eq
    cinvoke bbText, x, y, text_str, BBFALSE, BBFALSE
 else
-   cinvoke wsprintf, _strBuffer, text_str, par
+   cinvoke sprintf, _strBuffer, text_str, par
    cinvoke bbText, x, y, _strBuffer, BBFALSE, BBFALSE
 end if
 }
@@ -23,7 +23,7 @@ skip:
 if par eq
    cinvoke bbPrint, text_str
 else
-   cinvoke wsprintf, _strBuffer, text_str, par
+   cinvoke sprintf, _strBuffer, text_str, par
    cinvoke bbPrint, _strBuffer
 end if
 }
