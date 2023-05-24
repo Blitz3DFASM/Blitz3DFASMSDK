@@ -5,7 +5,7 @@
 format PE GUI 4.0
 entry start
 
-include 'win32a.inc'
+include 'win32ax.inc'
 include 'blitz3dsdk.inc'
 
 ; ------------ variables and arrays ----------------
@@ -21,7 +21,7 @@ g dd 0
 b dd 0
 
 font_name db 'System',0
-text db "Simple Text! Простой текст",0
+text db "Simple Text! ГЏГ°Г®Г±ГІГ®Г© ГІГҐГЄГ±ГІ",0
 title db 'Blitz3D 2D Graphics Exmple on FASM', 0
 exit db 'Do you really want to exit?', 0
 empty_str db 0
