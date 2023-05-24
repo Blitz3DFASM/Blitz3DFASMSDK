@@ -1,4 +1,4 @@
-; bbLCreateLight Example
+; bbCreateLight bbLightRange Example
 include "blitz3d.inc"
 
 sphere dd 0
