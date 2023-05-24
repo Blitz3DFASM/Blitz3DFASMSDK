@@ -7,7 +7,7 @@
 format PE GUI 4.0
 entry start
 
-include 'win32a.inc'
+include 'win32ax.inc'
 include 'blitz3dsdk.inc'
 
 ; ------------ variables and arrays ----------------
